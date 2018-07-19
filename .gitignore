@@ -50,4 +50,8 @@
 .idea/**/dbnavigator.xml
 
 # Editor-based Rest Client
-.idea/httpRequests
+.idea/httpRequests/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
