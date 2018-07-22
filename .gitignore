@@ -59,4 +59,4 @@ yarn-debug.log*
 
 # Webpacker
 
-public/packs
+/public/packs
