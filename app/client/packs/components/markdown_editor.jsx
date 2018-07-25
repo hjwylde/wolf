@@ -1,18 +1,26 @@
-import PropTypes from 'prop-types'
-import React from 'react'
 import {Editor, EditorState, RichUtils} from 'draft-js'
+import React from 'react'
 
 import 'draft-js/dist/Draft.css';
 
-export default class EditMe extends React.Component {
+export default class MarkdownEditor extends React.Component {
     constructor() {
         super();
 
         this.state = {editorState: EditorState.createEmpty()};
         this.onChange = (editorState) => this.setState({editorState});
-        this.handleKeyCommand = (command, editor) => {
-            RichUtils.handleKeyCommand(editor, command)
-        };
+
+        this.handleKeyCommand = this.handleKeyCommand.bind(this);
+    }
+
+    handleKeyCommand(command, editorState) {
+        const newState = RichUtils.handleKeyCommand(editorState, command);
+        if (newState) {
+            this.onChange(newState);
+            return 'handled';
+        }
+
+        return 'not-handled';
     }
 
     render() {
@@ -23,6 +31,4 @@ export default class EditMe extends React.Component {
     }
 }
 
-EditMe.propTypes = {
-    name: PropTypes.string.isRequired,
-};
+MarkdownEditor.propTypes = {};

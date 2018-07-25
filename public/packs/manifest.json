@@ -1,6 +1,8 @@
 {
-  "components/hello_world.js": "/packs/components/hello_world-66f75d1af6b88c3f897c.js",
-  "components/hello_world.js.map": "/packs/components/hello_world-66f75d1af6b88c3f897c.js.map",
-  "hello_react.js": "/packs/hello_react-66f75d1af6b88c3f897c.js",
-  "hello_react.js.map": "/packs/hello_react-66f75d1af6b88c3f897c.js.map"
+  "components/markdown_editor.js": "/packs/components/markdown_editor-891d2c41c8c7b45c92ca.js",
+  "components/markdown_editor.js.map": "/packs/components/markdown_editor-891d2c41c8c7b45c92ca.js.map",
+  "pages/root.js": "/packs/pages/root-891d2c41c8c7b45c92ca.js",
+  "pages/root.js.map": "/packs/pages/root-891d2c41c8c7b45c92ca.js.map",
+  "pages/root/root.js": "/packs/pages/root/root-891d2c41c8c7b45c92ca.js",
+  "pages/root/root.js.map": "/packs/pages/root/root-891d2c41c8c7b45c92ca.js.map"
 }

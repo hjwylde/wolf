@@ -10,15 +10,7 @@ gem "webpacker"
 
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# gem 'jbuilder', '~> 2.5'
-# gem 'bcrypt', '~> 3.1.7'
-
-group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
-
 group :development do
-  # gem 'capistrano-rails', group: :development
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
