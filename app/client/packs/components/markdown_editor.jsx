@@ -1,34 +1,43 @@
-import {Editor, EditorState, RichUtils} from 'draft-js'
+import {CompositeDecorator, Editor, EditorState, Modifier} from 'draft-js'
 import React from 'react'
 
 import 'draft-js/dist/Draft.css';
+
+const boldStrategy = (contentBlock, callback, contentState) => {
+    findWithRegex(HANDLE_REGEX, contentBlock, callback);
+};
+
+const _decorator = new CompositeDecorator([
+    {
+        strategy: boldStrategy,
+        component: BoldSpan,
+    }
+]);
 
 export default class MarkdownEditor extends React.Component {
     constructor() {
         super();
 
-        this.state = {editorState: EditorState.createEmpty()};
-        this.onChange = (editorState) => this.setState({editorState});
-
-        this.handleKeyCommand = this.handleKeyCommand.bind(this);
-    }
-
-    handleKeyCommand(command, editorState) {
-        const newState = RichUtils.handleKeyCommand(editorState, command);
-        if (newState) {
-            this.onChange(newState);
-            return 'handled';
-        }
-
-        return 'not-handled';
+        this.state = {editorState: EditorState.createEmpty(DECORATOR)};
     }
 
     render() {
         return (
-            <Editor editorState={this.state.editorState} onChange={this.onChange}
-                    handleKeyCommand={this.handleKeyCommand}/>
+            <Editor
+                editorState={this.state.editorState}
+                onChange={this._onChange.bind(this)}
+                stripPastedStyles
+            />
         );
     }
-}
 
-MarkdownEditor.propTypes = {};
+    _onChange(editorState) {
+        let text = editorState.getCurrentContent().getFirstBlock().getText();
+        console.log(text);
+        let contentState = Modifier.setBlockType(editorState.getCurrentContent(), editorState.getSelection(), 'header-one');
+        editorState = EditorState.push(editorState, contentState);
+
+
+        this.setState({editorState});
+    }
+}
